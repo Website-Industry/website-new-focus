@@ -1,0 +1,105 @@
+---
+const faqs = [
+  {
+    question: "Qu'est-ce que le nocode et en quoi est-il avantageux pour mon entreprise ?",
+    answer: "Le nocode est une famille d'outils qui permet de créer des applications , des espaces et des outils puissants sans avoir besoin de savoir coder. Cela offre des avantages tels qu'une mise en œuvre rapide, une facilité de modification et d'adaptation, et des coûts de développement réduits."
+  },
+  {
+    question: "Quelles sont vos compétences techniques ?",
+    answer: "Ingénieur diplomé d'Epitech en 2015, je me suis spécialisé dans le développement web pendant près de 8 ans. Formateur en développement javascript au sein d'Oclock pendant 3 ans. Passionné par l'intelligence collective et les processus qui permettent de créer à plusieurs j'ai intégré \"les outils nocode\" depuis 2020 dans mes projets."
+  },
+  {
+    question: "Comment fonctionne l'automatisation des processus métier avec les outils nocode ?",
+    answer: "L'automatisation des processus métier avec les outils nocode consiste à créer des flux de travail automatisés qui exécutent des tâches répétitives et chronophages. Cela permet de gagner du temps et d'augmenter l'efficacité de vos opérations."
+  },
+  {
+    question: "Pouvez-vous nous aider à mettre en place une collaboration plus fluide au sein de votre équipe ?",
+    answer: "Absolument ! Je peux vous aider à identifier les outils de collaboration adaptés à vos besoins et à vous accompagner dans leur mise en place pour faciliter la communication et la collaboration au sein de votre équipe."
+  },
+  {
+    question: "Quels types de projets web pouvez-vous créer avec des outils nocode ?",
+    answer: "Les outils nocode sont polyvalents et peuvent être utilisés pour créer une variété de projets web tels que des sites web d'entreprise, des applications, des bases de données, des formulaires interactifs, et bien plus encore."
+  },
+  {
+    question: "Proposez-vous des formations en présentiel ou en ligne ?",
+    answer: "Oui, les formations des équipes sur les outils nocode ainsi que les outils mis en place ensemble font partie des étape clefs de notre collaboration."
+  },
+  {
+    question: "Comment puis-je vous contacter pour discuter de mes besoins ?",
+    answer: "Vous pouvez me contacter en utilisant le formulaire de contact sur mon site web en haut à droite ou en prenant rendez vous directement avec moi grâce à calendly ."
+  },
+  {
+    question: "Proposez-vous des services d'assistance technique après la mise en place des outils nocode ?",
+    answer: "Oui, je propose un suivi après la mis en place des outils et je suis disponible pour répondre à vos questions ou vous aider en cas de besoin."
+  },
+  {
+    question: "Quels sont les retours des clients concernant vos services de formation et de développement web ?",
+    answer: "Mes clients ont exprimé leur satisfaction quant à la qualité de mes formations, à mon approche pédagogique et à ma capacité à comprendre leurs besoins pour fournir des solutions adaptées."
+  }
+];
+---
+
+<section class="relative py-20 bg-[#faf8f3] overflow-hidden">
+  <!-- Dotted pattern top left -->
+  <div class="absolute top-0 left-0 w-32 h-32 opacity-20">
+    <div class="grid grid-cols-4 gap-2 w-full h-full">
+      {Array.from({ length: 16 }).map(() => (
+        <div class="w-2 h-2 bg-black rounded-full"></div>
+      ))}
+    </div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">D'autres questions ?</h2>
+        <p class="text-lg md:text-xl text-gray-600">
+          Les questions suivantes correspondent aux besoins les plus fréquemment exprimés. Si vous ne trouvez pas de réponses à vos questions ici, n'hésitez pas à me contacter.
+        </p>
+      </div>
+      <div class="space-y-3">
+        {faqs.map((faq, index) => (
+          <div class="faq-item bg-white rounded-lg p-6 shadow-sm cursor-pointer hover:shadow-md transition-all" data-index={index}>
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-bold text-gray-900 pr-4">
+                {faq.question}
+              </h3>
+              <span class="faq-toggle text-2xl font-light text-gray-600 flex-shrink-0">+</span>
+            </div>
+            <div class="faq-answer hidden mt-4 pt-4 border-t border-gray-100">
+              <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+  
+  <!-- Wavy shapes at bottom -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 overflow-hidden">
+    <svg class="w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="#4f46e5" opacity="0.8"/>
+      <path d="M0,80 Q300,40 600,80 T1200,80 L1200,120 L0,120 Z" fill="#6366f1" opacity="0.6"/>
+      <path d="M0,100 Q300,60 600,100 T1200,100 L1200,120 L0,120 Z" fill="#faf8f3"/>
+    </svg>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach((item) => {
+    const toggle = item.querySelector('.faq-toggle');
+    const answer = item.querySelector('.faq-answer');
+    
+    item.addEventListener('click', () => {
+      const isOpen = !answer.classList.contains('hidden');
+      
+      if (isOpen) {
+        answer.classList.add('hidden');
+        toggle.textContent = '+';
+      } else {
+        answer.classList.remove('hidden');
+        toggle.textContent = '−';
+      }
+    });
+  });
+</script>

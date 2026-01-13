@@ -1,0 +1,247 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: "Formation pour O'clock",
+    description: "A destination des usages internes des employés du centre de formation O'clock, nous avons mis en place une série de vidéos pédagogiques ainsi que plusieurs documentations liées aux process internes de l'entreprise.",
+    link: "#formation-oclock",
+    color: "blue",
+    image: "/images/projets/l'instant coda.png"
+  },
+  {
+    title: "Le séquenceur",
+    description: "Espace collaboratif et centralisé pour pouvoir gérer son activité : agenda, médiathèque, planification des événements, administration, etc.",
+    link: "#sequenceur",
+    color: "blue",
+    image: "/images/projets/le séquenceur preview.png"
+  },
+  {
+    title: "CRM/ERP sur mesure",
+    description: "Mise en place d'un outil coda, en collaboration avec Jessalynn Choby, pour gérer les apprenants ainsi que toute l'activité interne de la structure \"Donner de la Voix\"",
+    link: "#crm-erp",
+    color: "blue",
+    image: "/images/projets/donner de la voix preview.png"
+  },
+  {
+    title: "Présence numérique de endophyte",
+    description: "Endophyte a pour mission de définir un écosystème autour du bois en créant des circuits courts entre l'arbre, les acteurs de la forêt, et les utilisateurs. Le groupe est composé de plusieurs activités : les bois boudés, endophyte, endolab et les menuisiers du puit.",
+    link: "#endophyte",
+    color: "blue",
+    image: "/images/projets/endophyte.png"
+  },
+  {
+    title: "Création de contenu automatisée",
+    description: "DTS un projet qui vise à informer à propos des risques festifs. Des publications sont faites quotidiennement sur instagram grâce à une automatisation réalisée avec make et airtable.",
+    link: "#contenu-automatise",
+    color: "blue",
+    image: "/images/projets/DTS preview.png"
+  },
+  {
+    title: "Et vous ?",
+    description: "Ensemble construisons votre projet sur mesure avec les outils appropriés.",
+    link: "#contact",
+    color: "orange",
+    isCTA: true
+  }
+];
+
+const projectDetails = [
+  {
+    id: "crm-erp",
+    title: "Outil CRM/ERP sur mesure",
+    description: "Donner de la voix est une structure de coaching vocal. Dans le cadre de son activité, un outil entièrement personnalisé a été développé, en collaboration avec Jessalynn Choby, pour gérer les apprenants ainsi que toute l'activité interne de la structure.",
+    stats: [
+      { number: "100+", label: "Elèves", description: "ont bénéficié d'un suivi personnalisé et d'une visibilité sur leur évolution lors de leur apprentissage.", icon: "person" },
+      { number: "5", label: "outils en 1", description: "ont été créés pour un outil mélant séparation des sujets tout en gardant une gestion centralisée.", icon: "tools" },
+      { number: "1", label: "espace dédié", description: "à chaque apprenant pour que chacun·e puisse avoir la possibilité de comprendre son parcours pédagogique", icon: "document" }
+    ],
+    cta: "Découvrir les offres de création d'outils sur mesure",
+    ctaLink: "/services#outils-mesure"
+  },
+  {
+    id: "contenu-automatise",
+    title: "Création de contenu automatisée",
+    description: "Daily Trip Sitter est un projet d'automatisation des publications concernant des informations objectives sur les risques liés aux pratiques festives. A l'aide de Make et de Airtable, la publication sur les réseau et **quotidienne** et **entièrement automatisée**.",
+    stats: [
+      { number: "650+", label: "Publications", description: "postées sur instagram depuis le lancement du projet.", icon: "chat" },
+      { number: "1", label: "seul processus", description: "utilisé pour produire l'intégralité de l'automatisation du projet", icon: "tools" },
+      { number: "1500+", label: "conseils", description: "publiés quotidiennement de manière aléatoire sur les résaux.", icon: "chart" }
+    ],
+    cta: "Découvrir les offres d'automatisation",
+    ctaLink: "/services#automatisation"
+  },
+  {
+    id: "endophyte",
+    title: "Création de l'activité endophyte",
+    description: "Endophyte a pour mission de définir un écosystème autour du bois en créant des circuits courts entre l'arbre, les acteurs de la forêt, et les utilisateurs. Ce projet récent nous a proposer de l'accompagner dans la création de sa présence numérique et ainsi que dans la structuration de son système d'informations.",
+    stats: [
+      { number: "2", label: "sites web", description: "Réalisés en accompagnement du client avec une centralisation du contenu sur Notion.", icon: "website" },
+      { number: "1", label: "espace collaboratif", description: "Créé sur **google workspace** pour centraliser l'activité de l'entreprise.", icon: "document" },
+      { number: "1", label: "suivi régulier", description: "Mis en place avec le client pour assurer la stabilité du système ainsi que la présence numérique", icon: "check" }
+    ],
+    cta: "Découvrir les offres de visibilité web",
+    ctaLink: "/services#creation-web"
+  },
+  {
+    id: "formation-oclock",
+    title: "Formation interne sur coda",
+    description: "Au sein d'oclock , nous avons mis en place un ensemble de **vidéos pédagogiques** pour accompagner les collaborateurs de l'entreprise dans **l'utilisation de l'outil coda** ainsi que des outils sur mesures mis en production.",
+    stats: [
+      { number: "1 jour", label: "", description: "De gagné par mois avec la mise en place d'un outil greffé au processus de l'entreprise", icon: "clock" },
+      { number: "40+", label: "personnes", description: "Formées à l'outil et utilisant régulièrement coda au sein du \"pôle suivi pédagogique\" d'O'clock", icon: "person" },
+      { number: "10+", label: "vidéos", description: "Accompagnant les collaborateurs dans leur utilisation de coda pour plus d'efficacité au quotidien.", icon: "video" }
+    ],
+    cta: "Découvrir les offres de formation",
+    ctaLink: "/services#formation"
+  },
+  {
+    id: "sequenceur",
+    title: "Un espace collaboratif",
+    description: "Le séquenceur, association lyonnaise, avait besoin d'un espace collaboratif et centralisé pour pouvoir gérer son activité : agenda, médiathèque, planification des événements, administration, etc.",
+    stats: [
+      { number: "1", label: "migration", description: "Depuis google workspace vers Notion en accompagnement avec l'association pour passer d'une philosophie à l'autre.", icon: "arrow" },
+      { number: "10+", label: "personnes", description: "Impliquée dans l'activité de l'association qui utilisent quotidiennement ce nouvel espace", icon: "person" },
+      { number: "150+", label: "pages", description: "Créées dans Notion depuis l'utilisation de cet espace centralisé.", icon: "document" }
+    ],
+    cta: "Découvrir les espaces de travail collaboratif",
+    ctaLink: "/services#collaboration"
+  }
+];
+---
+
+<Layout title="Projets - New Focus">
+  <!-- Hero Section -->
+  <section class="relative bg-[#5233ff] pt-8 pb-20 md:pt-8 md:pb-32 overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">Nos projets réalisés</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liste des projets -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+          {projects.map((project) => (
+            <div class={`rounded-2xl p-8 text-white shadow-xl hover:shadow-2xl transition-all overflow-hidden ${project.isCTA ? 'bg-[#ff6b35]' : 'bg-[#0284c7]'}`}>
+              {project.image && (
+                <div class="mb-4 rounded-lg overflow-hidden">
+                  <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
+                </div>
+              )}
+              <h3 class="text-2xl font-bold mb-4">{project.title}</h3>
+              <p class="text-white/90 mb-6 leading-relaxed">{project.description}</p>
+              {project.isCTA ? (
+                <a href={project.link} class="inline-block bg-white text-[#ff6b35] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                  Prendre contact
+                </a>
+              ) : (
+                <a href={project.link} class="text-white font-semibold hover:underline flex items-center gap-2">
+                  En savoir plus →
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Détails des projets -->
+  {projectDetails.map((detail, index) => {
+          const isEven = index % 2 === 0;
+          const bgColor = isEven ? 'bg-white' : 'bg-[#FFFBEB]';
+          // Fonction pour obtenir l'icône SVG selon le type
+          const getIcon = (iconType: string) => {
+            switch(iconType) {
+              case 'person':
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>';
+              case 'tools':
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>';
+              case 'document':
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>';
+              case 'chat':
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>';
+              case 'chart':
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>';
+              case 'website':
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>';
+              case 'check':
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+              case 'clock':
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+              case 'video':
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>';
+              case 'arrow':
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>';
+              default:
+                return '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+            }
+          };
+          
+          return (
+            <section id={detail.id} class={`scroll-mt-20 ${bgColor} py-16 w-full`}>
+              <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                  {/* Titre */}
+                  <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                    {detail.title.split(' ').map((word, i) => 
+                      word.toLowerCase() === 'endophyte' ? (
+                        <span key={i} class="text-[#ff6b35]">{word} </span>
+                      ) : (
+                        <span key={i}>{word} </span>
+                      )
+                    )}
+                  </h2>
+                  
+                  {/* Paragraphe */}
+                  <div class="text-lg text-gray-700 mb-8 leading-relaxed" set:html={detail.description.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')} />
+                  
+                  {/* Image */}
+                  <div class="mb-12 rounded-xl overflow-hidden flex justify-center">
+                    {detail.id === "crm-erp" && <img src="/images/projets/donner de la voix.png" alt={detail.title} class="w-1/2 h-auto object-cover" />}
+                    {detail.id === "contenu-automatise" && <img src="/images/projets/daily trip sitter.png" alt={detail.title} class="w-1/2 h-auto object-cover" />}
+                    {detail.id === "endophyte" && <img src="/images/projets/endophyte.png" alt={detail.title} class="w-1/2 h-auto object-cover" />}
+                    {detail.id === "formation-oclock" && <img src="/images/projets/l'instant coda.png" alt={detail.title} class="w-1/2 h-auto object-cover" />}
+                    {detail.id === "sequenceur" && <img src="/images/projets/le séquenceur.png" alt={detail.title} class="w-1/2 h-auto object-cover" />}
+                  </div>
+                  
+                  {/* Métriques */}
+                  <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    {detail.stats.map((stat) => (
+                      <div class="text-center">
+                        <div class="flex justify-center mb-4">
+                          <div class="w-20 h-20 rounded-full bg-gradient-to-br from-orange-400 to-yellow-400 flex items-center justify-center shadow-lg" set:html={getIcon(stat.icon || 'check')}></div>
+                        </div>
+                        <div class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-2">{stat.number}</div>
+                        {stat.label && <div class="text-base font-bold text-[#1e3a8a] mb-3">{stat.label}</div>}
+                        <p class="text-gray-600 text-sm leading-relaxed">{stat.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* CTA */}
+                  <div class="text-center">
+                    <a href={detail.ctaLink} class="inline-block bg-[#5233ff] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#4a2dff] transition-colors">
+                      {detail.cta}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        })}
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-[#faf8f3]">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Utilisez les bons outils 🎉</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+

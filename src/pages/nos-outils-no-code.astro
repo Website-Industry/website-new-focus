@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tools = [
+  {
+    name: "Notion",
+    description: "Espace de travail centralisé et connecté.",
+    category: "Documentation / Structuration",
+    features: [
+      "Gestion de projets",
+      "Base de données",
+      "Collaboration",
+      "Création de contenu",
+      "Suivi des données",
+      "Personnalisation"
+    ],
+    color: "purple",
+    logo: "/images/outils/notion.png"
+  },
+  {
+    name: "Coda",
+    description: "Le futur du document interactif et collaboratif.",
+    category: "Documentation / Structuration",
+    features: [
+      "Gestion de projets et tâches",
+      "Bases de données interactives",
+      "Automatisation des processus",
+      "Collaboration en temps réel",
+      "Création de documents interactifs",
+      "Suivi des KPI"
+    ],
+    color: "orange",
+    logo: "/images/outils/coda.png"
+  },
+  {
+    name: "Make (Integromat)",
+    description: "Plateforme d'automatisation aux possibilités quasi infinies.",
+    category: "Automatisation",
+    features: [
+      "Automatisez",
+      "Centralisez",
+      "Créez des flux de travail sans coder",
+      "Synchronisez vos données",
+      "Soyez notifiés",
+      "Économisez des ressources"
+    ],
+    color: "purple",
+    logo: "/images/outils/make.svg"
+  },
+  {
+    name: "Weweb",
+    description: "Pour aller plus loin avec vos applications web",
+    category: "Applications Web",
+    features: [
+      "Développement Rapide",
+      "Coûts Abordables",
+      "Flexibilité Maximale",
+      "Évolutivité Facilitée",
+      "Fonctionnalités Avancées",
+      "Démarrage Rapide",
+      "Risques Minimisés"
+    ],
+    color: "red",
+    logo: "/images/outils/weweb.png"
+  },
+  {
+    name: "Dorik",
+    description: "Création de site web en un éclair",
+    category: "Sites Vitrine",
+    features: [
+      "Simplicité de Création",
+      "Adaptabilité Mobile",
+      "Bibliothèque de Blocs Réutilisables",
+      "Esthétique Professionnelle",
+      "SEO Intégré",
+      "Performances Optimisées"
+    ],
+    color: "blue",
+    logo: "/images/outils/dorik.png"
+  },
+  {
+    name: "Airtable",
+    description: "Pour donner vie à vos données",
+    category: "Base de données",
+    features: [
+      "Bases de données relationnelles",
+      "Vues multiples",
+      "Automatisation",
+      "Collaboration",
+      "Intégrations",
+      "Formulaires personnalisés"
+    ],
+    color: "multi",
+    logo: "/images/outils/airtable.png"
+  }
+];
+
+const getColorClasses = (color: string) => {
+  const colors: Record<string, { bg: string; text: string; border: string }> = {
+    purple: { bg: "bg-purple-100", text: "text-purple-600", border: "border-purple-500" },
+    orange: { bg: "bg-orange-100", text: "text-orange-600", border: "border-orange-500" },
+    red: { bg: "bg-red-100", text: "text-red-600", border: "border-red-500" },
+    blue: { bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-500" },
+    multi: { bg: "bg-gradient-to-r from-yellow-100 via-blue-100 to-red-100", text: "text-gray-700", border: "border-yellow-500" }
+  };
+  return colors[color] || colors.purple;
+};
+---
+
+<Layout title="Nos outils No-Code - New Focus">
+  <!-- Hero Section -->
+  <section class="relative bg-[#5233ff] pt-8 pb-20 md:pt-8 md:pb-32 overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">Nos outils</h1>
+        <p class="text-xl md:text-2xl opacity-90 mb-4">
+          Plus que de simples outils, chaque outil Nocode vient avec un paradigme et une culture spécifique.
+        </p>
+        <p class="text-lg md:text-xl opacity-80">
+          Voici quels sont les outils principaux utilisés chez New Focus.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liste des outils -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <!-- Grille des outils -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {tools.map((tool) => {
+            const colors = getColorClasses(tool.color);
+            return (
+              <div class={`bg-white border-2 border-gray-100 rounded-lg p-6 hover:shadow-lg transition-all ${colors.border} border-b-4`}>
+                <div class={`w-14 h-14 ${colors.bg} rounded-xl flex items-center justify-center mb-4 p-2`}>
+                  {tool.logo ? (
+                    <img src={tool.logo} alt={tool.name} class="w-full h-full object-contain" />
+                  ) : (
+                    <span class={`text-2xl font-bold ${colors.text}`}>{tool.name.charAt(0)}</span>
+                  )}
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">{tool.name}</h3>
+                <p class="text-gray-600 mb-4">{tool.description}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <!-- Détails des outils principaux -->
+        <div class="space-y-16">
+          {tools.map((tool, index) => {
+            const colors = getColorClasses(tool.color);
+            const isEven = index % 2 === 0;
+            return (
+              <div class={`grid md:grid-cols-2 gap-12 items-center ${!isEven ? 'md:flex-row-reverse' : ''}`}>
+                <div class={isEven ? '' : 'md:order-2'}>
+                  <div class="mb-4">
+                    <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">{tool.category}</span>
+                  </div>
+                  <h2 class={`text-4xl md:text-5xl font-bold mb-6 ${colors.text}`}>{tool.name}</h2>
+                  <ul class="space-y-3 mb-8">
+                    {tool.features.map((feature) => (
+                      <li class="flex items-start gap-3">
+                        <span class={`${colors.text} mt-1`}>•</span>
+                        <span class="text-gray-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="#" class={`inline-block ${colors.text} font-semibold hover:underline`}>
+                    Voir un exemple →
+                  </a>
+                </div>
+                <div class={`${isEven ? '' : 'md:order-1'} rounded-xl h-64 overflow-hidden bg-gray-100 flex items-center justify-center`}>
+                  {tool.logo && (
+                    <img src={tool.logo} alt={tool.name} class="max-w-full max-h-full object-contain" />
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-[#faf8f3]">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Utilisez les bons outils 🎉</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+

@@ -1,0 +1,63 @@
+---
+---
+
+<header class="relative bg-white sticky top-0 z-50">
+  <!-- Ligne violette en haut -->
+  <div class="absolute top-0 left-0 right-0 h-0.5 bg-[#5233ff] opacity-30"></div>
+  
+  <nav class="container mx-auto px-4 py-6 relative z-10">
+    <div class="flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <div class="text-3xl font-bold text-[#5233ff]">NF</div>
+        <div class="flex flex-col text-[#5233ff] text-sm font-medium leading-tight">
+          <span>NEW</span>
+          <span>FOCUS</span>
+        </div>
+      </a>
+      <ul class="hidden md:flex items-center space-x-8">
+        <li><a href="/services" class="text-[#5233ff] hover:opacity-80 font-medium transition-opacity">Services</a></li>
+        <li><a href="/projets" class="text-[#5233ff] hover:opacity-80 font-medium transition-opacity">Projets</a></li>
+        <li><a href="/nos-outils-no-code" class="text-[#5233ff] hover:opacity-80 font-medium transition-opacity">Nos outils</a></li>
+        <li><a href="#contact" class="text-[#5233ff] border-2 border-[#5233ff] px-4 py-2 rounded hover:bg-[#5233ff] hover:text-white transition-all font-medium">Me contacter</a></li>
+        <li><a href="#devis" class="bg-white text-[#5233ff] border-2 border-[#5233ff] px-6 py-2 rounded font-semibold hover:bg-[#5233ff] hover:text-white transition-all">Demander un devis</a></li>
+      </ul>
+      <button class="md:hidden text-[#5233ff] p-2" id="mobile-menu-btn" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <ul class="md:hidden hidden mt-4 space-y-3 pb-4 bg-white">
+      <li><a href="/services" class="block py-2 text-[#5233ff] font-medium">Services</a></li>
+      <li><a href="/projets" class="block py-2 text-[#5233ff] font-medium">Projets</a></li>
+      <li><a href="/nos-outils-no-code" class="block py-2 text-[#5233ff] font-medium">Nos outils</a></li>
+      <li><a href="#contact" class="block py-2 text-[#5233ff] font-medium">Me contacter</a></li>
+      <li><a href="#devis" class="block bg-white text-[#5233ff] border-2 border-[#5233ff] px-6 py-2 rounded font-semibold text-center">Demander un devis</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Ligne violette en bas du header -->
+  <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-[#5233ff] opacity-30"></div>
+  
+  <!-- Courbe de délimitation en bas -->
+  <div class="absolute -bottom-12 left-0 right-0 h-20 overflow-hidden pointer-events-none">
+    <svg class="w-full h-full" viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <!-- Ligne supérieure plus claire -->
+      <path d="M0,20 Q300,15 600,20 T1200,20 L1200,80 L0,80 Z" fill="#7c3aed" opacity="0.3"/>
+      <!-- Ligne principale de transition vers le bleu/violet -->
+      <path d="M0,40 Q300,35 600,40 T1200,40 L1200,80 L0,80 Z" fill="#5233ff"/>
+    </svg>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
+

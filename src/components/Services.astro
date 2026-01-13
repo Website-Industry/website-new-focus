@@ -1,0 +1,93 @@
+---
+const services = [
+  {
+    title: "Automatisation intelligente",
+    description: "Gagnez du temps et de l'efficacité grâce à des outils automatisés sur mesure.",
+    iconColor: "purple",
+    borderColor: "border-b-purple-500"
+  },
+  {
+    title: "Formation sur mesure",
+    description: "Des programmes de formation personnalisés pour vos équipes.",
+    iconColor: "orange",
+    borderColor: "border-b-orange-500"
+  },
+  {
+    title: "Collaboration fluide",
+    description: "Mise en place de solutions personnalisées pour améliorez la collaboration au sein de votre équipe",
+    iconColor: "pink",
+    borderColor: "border-b-pink-500"
+  },
+  {
+    title: "Intégration de systèmes",
+    description: "Connectez vos outils et vos plateformes pour une meilleure efficacité.",
+    iconColor: "green",
+    borderColor: "border-b-green-500"
+  },
+  {
+    title: "Assistance technique",
+    description: "Une assistance technique personnalisée pour répondre à vos questions.",
+    iconColor: "blue",
+    borderColor: "border-b-blue-500"
+  },
+  {
+    title: "Transformation numérique facilitée",
+    description: "Faites évoluer votre structure grâce à des solutions nocode adaptées à vos besoins et boostez votre productivité.",
+    iconColor: "light-blue",
+    borderColor: "border-b-cyan-500"
+  }
+];
+
+const getIconBg = (color: string) => {
+  const colors: Record<string, string> = {
+    purple: "bg-purple-100",
+    orange: "bg-orange-100",
+    pink: "bg-pink-100",
+    green: "bg-green-100",
+    blue: "bg-blue-100",
+    "light-blue": "bg-cyan-100"
+  };
+  return colors[color] || "bg-gray-100";
+};
+
+const getIconColor = (color: string) => {
+  const colors: Record<string, string> = {
+    purple: "text-purple-600",
+    orange: "text-orange-600",
+    pink: "text-pink-600",
+    green: "text-green-600",
+    blue: "text-blue-600",
+    "light-blue": "text-cyan-600"
+  };
+  return colors[color] || "text-gray-600";
+};
+---
+
+<section id="services" class="section bg-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Ce que je vous propose</h2>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+          Adopter une approche innovante en proposant des solutions créatives et adaptées à vos défis actuels.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <div class={`bg-white border-2 border-gray-100 rounded-lg p-6 hover:shadow-lg transition-all ${service.borderColor} border-b-4`}>
+            <div class={`w-14 h-14 ${getIconBg(service.iconColor)} rounded-xl flex items-center justify-center mb-5`}>
+              <svg class={`w-7 h-7 ${getIconColor(service.iconColor)}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
+            <p class="text-gray-600 leading-relaxed">
+              {service.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
