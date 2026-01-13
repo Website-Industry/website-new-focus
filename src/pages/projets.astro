@@ -126,7 +126,7 @@ const projectDetails = [
       <div class="max-w-6xl mx-auto">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
           {projects.map((project) => (
-            <div class={`rounded-2xl p-8 text-white shadow-xl hover:shadow-2xl transition-all overflow-hidden ${project.isCTA ? 'bg-[#ff6b35]' : 'bg-[#0284c7]'}`}>
+            <div class={`rounded-2xl p-8 text-white shadow-xl hover:shadow-2xl transition-all overflow-hidden ${project.isCTA ? 'bg-[#F6A20E]' : 'bg-[#0284c7]'}`}>
               {project.image && (
                 <div class="mb-4 rounded-lg overflow-hidden">
                   <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
@@ -135,7 +135,7 @@ const projectDetails = [
               <h3 class="text-2xl font-bold mb-4">{project.title}</h3>
               <p class="text-white/90 mb-6 leading-relaxed">{project.description}</p>
               {project.isCTA ? (
-                <a href={project.link} class="inline-block bg-white text-[#ff6b35] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                <a href={project.link} class="inline-block bg-white text-[#F6A20E] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                   Prendre contact
                 </a>
               ) : (
@@ -190,7 +190,7 @@ const projectDetails = [
                   <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
                     {detail.title.split(' ').map((word, i) => 
                       word.toLowerCase() === 'endophyte' ? (
-                        <span key={i} class="text-[#ff6b35]">{word} </span>
+                        <span key={i} class="text-[#F6A20E]">{word} </span>
                       ) : (
                         <span key={i}>{word} </span>
                       )

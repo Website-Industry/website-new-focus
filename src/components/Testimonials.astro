@@ -1,84 +1,417 @@
 ---
+const testimonials = [
+  {
+    id: 1,
+    quote1: "Marc est quelqu'un de profondément humain et impliqué. Très très curieux, il fait tout pour trouver des solutions innovantes et permettre à tous de travailler vite et mieux. Fidèle à ses valeurs, il a besoin de croire en ce qu'il fait, d'adhérer à un projet.",
+    quote2: "Au sein de l'équipe Suivi pédagogique, Marc nous a beaucoup apporté, notamment sur le plan des outils",
+    quote3: "Merci Marc pour qui tu es et ce que tu peux apporter aux autres 💪",
+    name: "Céline Berthon",
+    role: "Responsable de Campus, Wild Code School",
+    image: "/images/temoignages/céline.png",
+    initials: "CB",
+    bgColor: "bg-[#4F46E5]"
+  },
+  {
+    id: 2,
+    quote1: "Fondamentalement animé par une soif de partage, Marc est quelqu'un d'ouvert, avec qui il est toujours enrichissant de discuter.",
+    quote2: "Au sein de l'équipe Suivi pédagogique - et à O'clock en général - Marc nous a beaucoup apporté, notamment sur le plan des outils ; et de par son agilité. En effet, il n'est pas du genre à s'épanouir dans une organisation du travail contrainte par des process sclérosés ! Fidèle à ses valeurs, il a besoin de croire en ce qu'il fait, d'adhérer à un projet - et quand il adhère, il s'implique entièrement.",
+    quote3: "Merci Marc pour tes ouvertures d'horizons :)",
+    name: "Déborah Jean",
+    role: "Développeuse web indépendante",
+    image: null,
+    initials: "DJ",
+    bgColor: "bg-[#F6A20E]"
+  },
+  {
+    id: 3,
+    quote1: "Marc est suffisamment pédagogue et patient pour arriver à me faire traduire mes attentes, m'apprendre à utiliser une base commune de travail, et créer un site web répondant parfaitement au cahier des charges. Chapeau l'artiste !",
+    quote2: "Je suis pressé de démarrer la création du deuxième site. Merci Marc pour ton professionnalisme.",
+    name: "Philippe Géant",
+    role: "Président, Endophyte",
+    image: "/images/temoignages/philippe.png",
+    initials: "PG",
+    bgColor: "bg-[#4F46E5]"
+  },
+  {
+    id: 4,
+    quote1: "Marc a rejoint notre équipe de développement NoCode en janvier 2024 pour participer au développement de plusieurs applications destinées à nos clients internes et externes. Il maîtrise bien les technologies WeWeb et Supabase, et a contribué efficacement à la constitution de notre design system ainsi qu'au développement de composants réutilisables.",
+    quote2: "Marc démontre une bonne autonomie technique et s'adapte parfaitement au travail en full distanciel, ce qui facilite grandement la collaboration au quotidien. Sa capacité d'adaptation et sa maîtrise des outils NoCode en font un développeur compétent pour des projets nécessitant rigueur technique et respect des standards établis.",
+    name: "Matthieu Arzel",
+    role: "TechLead, PwC France",
+    image: null,
+    initials: "MA",
+    bgColor: "bg-[#F6A20E]"
+  },
+  {
+    id: 5,
+    quote1: "C'est un réel plaisir de travailler quotidiennement avec Marc depuis 1 an. Rigoureux, force de proposition et à l'écoute, il est non seulement fiable et impliqué dans son travail mais c'est aussi une personne bienveillante, solaire et pédagogue.",
+    quote2: "Ce qui rend notre collaboration aussi agréable qu'efficace : il comprend les enjeux UX/UI et sait trouver de bons compromis entre design et solutions technique. Je recommande à 100% Marc !",
+    name: "Céline Sung",
+    role: "UX/UI Designer, PwC France et Maghreb",
+    image: null,
+    initials: "CS",
+    bgColor: "bg-[#4F46E5]"
+  },
+  {
+    id: 6,
+    quote1: "J'ai eu la chance de travailler avec Marc, et c'est une expérience que je recommande à 100 % ! Expert entre autres en nocode, il a su me transmettre de précieuses connaissances avec une pédagogie claire et efficace.",
+    quote2: "Marc est une personne organisée, à l'écoute et toujours prête à aider. Sa capacité à structurer les choses et à expliquer avec simplicité rend le travail avec lui à la fois fluide et enrichissant.",
+    name: "Marie G.",
+    role: "Développeuse web, Marie Garde EI",
+    image: null,
+    initials: "MG",
+    bgColor: "bg-[#F6A20E]"
+  },
+  {
+    id: 7,
+    quote1: "Travailler avec toi a été une vraie opportunité d'échanger sur des idées novatrices et bien structurées. Ta capacité à gérer des projets avec clarté et à toujours proposer des solutions créatives fait toute la différence.",
+    quote2: "C'est un plaisir de collaborer avec quelqu'un d'aussi organisé et inspirant. Au plaisir de retravailler ensemble !",
+    name: "Joris L.",
+    role: "Développeur, Joris Lefait EI",
+    image: null,
+    initials: "JL",
+    bgColor: "bg-[#4F46E5]"
+  },
+  {
+    id: 8,
+    quote1: "Je cherchais une personne pour créer mon nouveau site internet et j'ai eu la chance de rencontrer Marc qui m'a accompagnée tout au long de la réalisation de mon projet.",
+    quote2: "Marc m'a non seulement aiguillée sur le contenu du site et de son design mais m'a aussi expliqué le fonctionnement de la plateforme pour que je sois autonome une fois terminé. Un grand professionnalisme, une réactivité et une créativité vraiment appréciables. Je recommande vivement !",
+    name: "Valentina Timpanaro",
+    role: "Naturopathe",
+    image: null,
+    initials: "VT",
+    bgColor: "bg-[#F6A20E]"
+  },
+  {
+    id: 9,
+    quote1: "Marc m'a aidé à terminer mon site internet pro, et a réussi à trouver comment le faire évoluer et résoudre certains problèmes spécifiques ; réelle volonté de résoudre les challenges, je recommande !",
+    name: "Vidéaste-Photographe",
+    role: "Freelance",
+    image: null,
+    initials: "VP",
+    bgColor: "bg-[#4F46E5]"
+  },
+  {
+    id: 10,
+    quote1: "Mr CHARTON m'a aidée dans mon projet de site wordpress pour ma micro entreprise. Nous avons ensemble travaillé sur le design, le référencement, et diverses fonctionnalités.",
+    quote2: "Mon site a été transformé et mon objectif d'avoir plus de prospects via mon site a été atteint rapidement. Je recommande Mr CHARTON avec qui il est agréable de collaborer, il est patient et bon communiquant, même lorsque les demandes ne sont pas formulées en termes techniques.",
+    name: "Jessalynn CHOBY",
+    role: "Gérante",
+    image: null,
+    initials: "JC",
+    bgColor: "bg-[#F6A20E]"
+  }
+];
 ---
 
-<section class="section bg-gray-50">
+<section class="section bg-gray-50 overflow-x-hidden">
   <div class="container mx-auto px-4">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Ils me font confiance</h2>
         <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-          Petits business, centres de formation, startup en croissance. En tant que jury, formateur, consultant ou intervenant, ils m'ont fait confiance pour mettre en place des solutions innovantes et pour participer à la qualité de leurs formations.
+          Petits business, centres de formation, startup en croissance, grandes entreprises. En tant que jury, formateur, consultant ou développeur, ils m'ont fait confiance pour mettre en place des solutions innovantes et pour participer à la qualité de leurs projets.
         </p>
       </div>
-      
-      <!-- Logos des entreprises -->
-      <div class="flex flex-wrap justify-center items-center gap-8 mb-16 opacity-60">
-        <img src="/images/partenaires/Logo_endophyte.jpg" alt="Endophyte" class="h-8 object-contain" />
-        <img src="/images/partenaires/epsi.png" alt="EPSI" class="h-8 object-contain" />
-        <img src="/images/partenaires/simplon.png" alt="SIMPLON.co" class="h-8 object-contain" />
-        <img src="/images/partenaires/oclock texte.png" alt="O'CLOCK" class="h-8 object-contain" />
-        <img src="/images/partenaires/alptis.png" alt="Alptis" class="h-8 object-contain" />
-        <img src="/images/partenaires/adrec.png" alt="ADREC" class="h-8 object-contain" />
+    </div>
+  </div>
+  
+  <!-- Logos des entreprises - Bandeau défilant -->
+  <div class="partners-marquee-wrapper w-full mb-16 py-8 overflow-hidden">
+    <div class="partners-marquee flex items-center gap-8 md:gap-12">
+      <!-- Première série de logos -->
+      <img src="/images/partenaires/Logo_endophyte.jpg" alt="Endophyte" class="partner-logo-marquee" />
+      <img src="/images/partenaires/epsi.png" alt="EPSI" class="partner-logo-marquee" />
+      <img src="/images/partenaires/simplon.png" alt="SIMPLON.co" class="partner-logo-marquee" />
+      <img src="/images/partenaires/oclock texte.png" alt="O'CLOCK" class="partner-logo-marquee" />
+      <img src="/images/partenaires/alptis.png" alt="Alptis" class="partner-logo-marquee" />
+      <img src="/images/partenaires/adrec.png" alt="ADREC" class="partner-logo-marquee" />
+      <img src="/images/partenaires/Ereah.svg" alt="Ereah" class="partner-logo-marquee partner-logo-ereah" />
+      <img src="/images/partenaires/PwC_Company_Logo.svg.png" alt="PwC" class="partner-logo-marquee" />
+      <!-- Duplication pour effet de boucle infinie -->
+      <img src="/images/partenaires/Logo_endophyte.jpg" alt="Endophyte" class="partner-logo-marquee" />
+      <img src="/images/partenaires/epsi.png" alt="EPSI" class="partner-logo-marquee" />
+      <img src="/images/partenaires/simplon.png" alt="SIMPLON.co" class="partner-logo-marquee" />
+      <img src="/images/partenaires/oclock texte.png" alt="O'CLOCK" class="partner-logo-marquee" />
+      <img src="/images/partenaires/alptis.png" alt="Alptis" class="partner-logo-marquee" />
+      <img src="/images/partenaires/adrec.png" alt="ADREC" class="partner-logo-marquee" />
+      <img src="/images/partenaires/Ereah.svg" alt="Ereah" class="partner-logo-marquee partner-logo-ereah" />
+      <img src="/images/partenaires/PwC_Company_Logo.svg.png" alt="PwC" class="partner-logo-marquee" />
+    </div>
+  </div>
+  
+  <!-- Carrousel de témoignages - Pleine largeur -->
+  <div class="testimonials-carousel-wrapper w-full py-8">
+    <div class="relative">
+      <!-- Conteneur avec overflow visible pour voir les cartes latérales -->
+      <div class="overflow-visible">
+        <div id="testimonials-carousel" class="flex items-center gap-6 transition-transform duration-500 ease-in-out">
+          {testimonials.map((testimonial, index) => (
+            <div 
+              class="testimonial-card flex-shrink-0 w-[480px] md:w-[576px] cursor-pointer transition-all duration-500"
+              data-index={index}
+            >
+              <div class={`${testimonial.bgColor} rounded-2xl p-8 text-white shadow-xl flex flex-col h-full`}>
+                <div class="mb-6">
+                  <svg class="w-12 h-12 text-white/80" fill="currentColor" viewBox="0 0 32 32">
+                    <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8zm16 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8z"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <p class="text-white/90 mb-4 text-lg leading-relaxed italic">
+                    "{testimonial.quote1}"
+                  </p>
+                  {testimonial.quote2 && !testimonial.quote3 && (
+                    <p class="text-white/90 mb-8 text-lg leading-relaxed italic">
+                      "{testimonial.quote2}"
+                    </p>
+                  )}
+                  {testimonial.quote2 && testimonial.quote3 && (
+                    <p class="text-white/90 mb-4 text-lg leading-relaxed italic">
+                      "{testimonial.quote2}"
+                    </p>
+                  )}
+                  {testimonial.quote3 && (
+                    <p class="text-white/90 mb-8 text-lg leading-relaxed italic">
+                      "{testimonial.quote3}"
+                    </p>
+                  )}
+                </div>
+                <div class="flex items-center gap-4 pt-6 border-t border-white/20 mt-auto">
+                  <div class="relative">
+                    <div class="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center overflow-hidden backdrop-blur-sm">
+                      {testimonial.image ? (
+                        <img src={testimonial.image} alt={testimonial.name} class="w-28 h-28 object-cover rounded-full" />
+                      ) : (
+                        <div class="w-28 h-28 rounded-full bg-white/30 flex items-center justify-center">
+                          <span class="text-3xl font-bold text-white">{testimonial.initials || testimonial.name.charAt(0)}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <p class="font-bold text-lg mb-1">{testimonial.name}</p>
+                    <p class="text-white/80 text-base">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       
-      <!-- Témoignages -->
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Carte bleue - Philippe Géant -->
-        <div class="bg-[#0284c7] rounded-2xl p-8 text-white shadow-xl">
-          <div class="mb-6">
-            <svg class="w-12 h-12 text-white/80" fill="currentColor" viewBox="0 0 32 32">
-              <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8zm16 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8z"/>
-            </svg>
-          </div>
-          <p class="text-white/90 mb-4 text-lg leading-relaxed italic">
-            "Marc est suffisamment pédagogue et patient pour arriver à me faire traduire mes attentes, m'apprendre à utiliser une base commune de travail, et créer un site web répondant parfaitement au cahier des charges. Chapeau l'artiste !"
-          </p>
-          <p class="text-white/90 mb-8 text-lg leading-relaxed italic">
-            "Je suis pressé de démarrer la création du deuxième site. Merci Marc pour ton professionnalisme."
-          </p>
-          <div class="flex items-center gap-4 pt-6 border-t border-white/20">
-            <div class="relative">
-              <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden">
-                <img src="/images/temoignages/philippe.png" alt="Philippe Géant" class="w-14 h-14 object-cover rounded-full" />
-              </div>
-            </div>
-            <div>
-              <p class="font-bold text-lg">Philippe Géant</p>
-              <p class="text-white/80">Président, Endolab</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Carte jaune - Céline Berthon -->
-        <div class="bg-[#ffd700] rounded-2xl p-8 text-gray-900 shadow-xl">
-          <div class="mb-6">
-            <svg class="w-12 h-12 text-gray-700/80" fill="currentColor" viewBox="0 0 32 32">
-              <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8zm16 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8z"/>
-            </svg>
-          </div>
-          <p class="text-gray-800 mb-4 text-lg leading-relaxed italic">
-            "Marc est quelqu'un de profondément humain et impliqué. Très très curieux, il fait tout pour trouver des solutions innovantes et permettre à tous de travailler vite et mieux. Fidèle à ses valeurs, il a besoin de croire en ce qu'il fait, d'adhérer à un projet."
-          </p>
-          <p class="text-gray-800 mb-4 text-lg leading-relaxed italic">
-            "Au sein de l'équipe Suivi pédagogique, Marc nous a beaucoup apporté, notamment sur le plan des outils"
-          </p>
-          <p class="text-gray-800 mb-8 text-lg leading-relaxed italic">
-            "Merci Marc pour qui tu es et ce que tu peux apporter aux autres 💪"
-          </p>
-          <div class="flex items-center gap-4 pt-6 border-t border-gray-300">
-            <div class="relative">
-              <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden">
-                <img src="/images/temoignages/céline.png" alt="Céline Berthon" class="w-14 h-14 object-cover rounded-full" />
-              </div>
-            </div>
-            <div>
-              <p class="font-bold text-lg">Céline Berthon</p>
-              <p class="text-gray-700">Responsable de Campus, Wild Code School</p>
-            </div>
-          </div>
-        </div>
+      <!-- Boutons de navigation -->
+      <button id="prev-btn" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors z-20" aria-label="Témoignage précédent">
+        <svg class="w-6 h-6 text-[#4F46E5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      <button id="next-btn" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors z-20" aria-label="Témoignage suivant">
+        <svg class="w-6 h-6 text-[#4F46E5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+      
+      <!-- Indicateurs (dots) -->
+      <div class="flex justify-center gap-2 mt-8">
+        {testimonials.map((_, index) => (
+          <button 
+            class={`testimonial-dot w-3 h-3 rounded-full transition-all ${index === 0 ? 'bg-[#4F46E5]' : 'bg-gray-300'}`}
+            data-index={index}
+            aria-label={`Aller au témoignage ${index + 1}`}
+          ></button>
+        ))}
       </div>
     </div>
   </div>
 </section>
 
+<style>
+  .testimonial-card {
+    opacity: 0.4;
+    filter: blur(3px);
+    transform: scale(0.85);
+    pointer-events: auto;
+  }
+  
+  .testimonial-card.active {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+    z-index: 10;
+  }
+  
+  .testimonial-card:hover:not(.active) {
+    opacity: 0.6;
+    filter: blur(2px);
+    transform: scale(0.9);
+  }
+  
+  /* Carrousel de témoignages - Pleine largeur */
+  .testimonials-carousel-wrapper {
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  #testimonials-carousel {
+    padding: 0 4rem;
+  }
+  
+  @media (min-width: 768px) {
+    #testimonials-carousel {
+      padding: 0 6rem;
+    }
+  }
+  
+  /* Bandeau défilant des logos partenaires */
+  .partners-marquee-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .partners-marquee {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    animation: scroll 30s linear infinite;
+    will-change: transform;
+  }
+  
+  @media (min-width: 768px) {
+    .partners-marquee {
+      gap: 3rem;
+    }
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .partner-logo-marquee {
+    height: 3.5rem;
+    object-fit: contain;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+  
+  .partner-logo-marquee:hover {
+    opacity: 0.8;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+  
+  .partner-logo-ereah {
+    filter: grayscale(100%) contrast(1.2) brightness(0.9);
+    opacity: 0.7;
+  }
+  
+  .partner-logo-ereah:hover {
+    filter: grayscale(0%) brightness(0) saturate(100%) invert(48%) sepia(20%) saturate(1200%) hue-rotate(195deg) brightness(0.92) contrast(1.05);
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  
+  @media (min-width: 768px) {
+    .partner-logo-marquee {
+      height: 4.5rem;
+    }
+  }
+</style>
+
+<script>
+  let currentIndex = 0;
+  const testimonials = document.querySelectorAll('.testimonial-card');
+  const carousel = document.getElementById('testimonials-carousel');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const dots = document.querySelectorAll('.testimonial-dot');
+  
+  const updateCarousel = () => {
+    if (!carousel) return;
+    
+    // Calculer la position de translation pour centrer la carte active
+    const cardWidth = testimonials[0]?.offsetWidth || 576; // w-[576px] = 576px par défaut
+    const gap = 24; // gap-6 = 1.5rem = 24px
+    const windowWidth = window.innerWidth;
+    const translateX = currentIndex * (cardWidth + gap) - (windowWidth / 2 - cardWidth / 2);
+    
+    carousel.style.transform = `translateX(-${Math.max(0, translateX)}px)`;
+    
+    // Mettre à jour les classes actives
+    testimonials.forEach((card, index) => {
+      if (index === currentIndex) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+    
+    // Mettre à jour les dots
+    dots.forEach((dot, index) => {
+      if (index === currentIndex) {
+        dot.classList.remove('bg-gray-300');
+        dot.classList.add('bg-[#4F46E5]');
+      } else {
+        dot.classList.remove('bg-[#4F46E5]');
+        dot.classList.add('bg-gray-300');
+      }
+    });
+  };
+  
+  const goToSlide = (index: number) => {
+    if (index < 0 || index >= testimonials.length) return;
+    currentIndex = index;
+    updateCarousel();
+  };
+  
+  const nextSlide = () => {
+    currentIndex = (currentIndex + 1) % testimonials.length;
+    updateCarousel();
+  };
+  
+  const prevSlide = () => {
+    currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+    updateCarousel();
+  };
+  
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => goToSlide(index));
+  });
+  
+  // Permettre de cliquer sur les cartes latérales pour naviguer
+  testimonials.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      if (index !== currentIndex) {
+        goToSlide(index);
+      }
+    });
+  });
+  
+  // Initialiser le carrousel après le chargement
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(updateCarousel, 100);
+    });
+  } else {
+    setTimeout(updateCarousel, 100);
+  }
+  
+  // Réinitialiser lors du redimensionnement
+  let resizeTimeout: ReturnType<typeof setTimeout>;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(updateCarousel, 250);
+  });
+</script>

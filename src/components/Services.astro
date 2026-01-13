@@ -61,6 +61,18 @@ const getIconColor = (color: string) => {
   };
   return colors[color] || "text-gray-600";
 };
+
+const getCardBg = (color: string) => {
+  const colors: Record<string, string> = {
+    purple: "bg-purple-50",
+    orange: "bg-orange-50",
+    pink: "bg-pink-50",
+    green: "bg-green-50",
+    blue: "bg-blue-50",
+    "light-blue": "bg-cyan-50"
+  };
+  return colors[color] || "bg-gray-50";
+};
 ---
 
 <section id="services" class="section bg-white">
@@ -74,7 +86,7 @@ const getIconColor = (color: string) => {
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
-          <div class={`bg-white border-2 border-gray-100 rounded-lg p-6 hover:shadow-lg transition-all ${service.borderColor} border-b-4`}>
+          <div class={`${getCardBg(service.iconColor)} border-2 border-gray-100 rounded-lg p-6 hover:shadow-lg transition-all ${service.borderColor} border-b-4`}>
             <div class={`w-14 h-14 ${getIconBg(service.iconColor)} rounded-xl flex items-center justify-center mb-5`}>
               <svg class={`w-7 h-7 ${getIconColor(service.iconColor)}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>

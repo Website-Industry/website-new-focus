@@ -4,28 +4,30 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Palette principale réduite basée sur le site d'origine
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          DEFAULT: '#5233ff', // Violet principal
+          dark: '#4a2dff', // Violet foncé pour hover
         },
-        // Custom colors from the original site
-        'nf-purple': '#5233ff',
-        'nf-orange': '#ff7e00',
-        'nf-yellow': '#ffc107',
-        'nf-pink': '#ff007f',
-        'nf-green': '#00e676',
-        'nf-blue': '#00b0ff',
-        'nf-cyan': '#00e5ff',
-        'nf-light-bg': '#faf8f3', // Beige/light yellow background
-        'nf-secondary-bg': '#FFFBEB', // Secondary background color for alternation
+        accent: {
+          DEFAULT: '#F6A20E', // Orange pour les CTA
+          dark: '#d8920c', // Orange foncé pour hover
+        },
+        blue: {
+          DEFAULT: '#0284c7', // Bleu pour certaines sections
+          light: '#0ea5e9',
+        },
+        // Backgrounds
+        background: {
+          DEFAULT: '#ffffff', // Blanc
+          light: '#faf8f3', // Beige/light yellow background
+          secondary: '#FFFBEB', // Background secondaire pour alternation (défini explicitement)
+        },
+        // Textes
+        text: {
+          DEFAULT: '#1f2937', // Gris foncé
+          light: '#6b7280', // Gris clair
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],

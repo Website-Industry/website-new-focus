@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
+  /* Palette principale réduite */
   --color-primary: #5233ff;
   --color-primary-dark: #4a2dff;
-  --color-purple: #5233ff;
-  --color-orange: #ff6b35;
-  --color-yellow: #ffd700;
+  --color-accent: #F6A20E;
+  --color-accent-dark: #d8920c;
+  --color-blue: #0284c7;
+  --color-blue-light: #0ea5e9;
   --color-text: #1f2937;
   --color-text-light: #6b7280;
-  --color-bg-light: #f9fafb;
-  --color-bg-beige: #faf8f3;
+  --color-bg-light: #faf8f3;
+  --color-bg-secondary: #FFFBEB; /* Background secondaire défini explicitement */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
