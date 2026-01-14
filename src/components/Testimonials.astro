@@ -1,4 +1,10 @@
 ---
+import { Image } from 'astro:assets';
+import celineImage from '../assets/images/temoignages/celine.png';
+import philippeImage from '../assets/images/temoignages/philippe.png';
+// Les logos partenaires utilisent des chemins directs depuis /public/ car ce sont des fichiers statiques
+// qui ne nécessitent pas d'optimisation et le marquee nécessite un rendu simple
+
 const testimonials = [
   {
     id: 1,
@@ -7,7 +13,7 @@ const testimonials = [
     quote3: "Merci Marc pour qui tu es et ce que tu peux apporter aux autres 💪",
     name: "Céline Berthon",
     role: "Responsable de Campus, Wild Code School",
-    image: "/images/temoignages/céline.png",
+    image: celineImage,
     initials: "CB",
     bgColor: "bg-[#4F46E5]"
   },
@@ -28,7 +34,7 @@ const testimonials = [
     quote2: "Je suis pressé de démarrer la création du deuxième site. Merci Marc pour ton professionnalisme.",
     name: "Philippe Géant",
     role: "Président, Endophyte",
-    image: "/images/temoignages/philippe.png",
+    image: philippeImage,
     initials: "PG",
     bgColor: "bg-[#4F46E5]"
   },
@@ -181,7 +187,7 @@ const testimonials = [
                   <div class="relative">
                     <div class="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center overflow-hidden backdrop-blur-sm">
                       {testimonial.image ? (
-                        <img src={testimonial.image} alt={testimonial.name} class="w-28 h-28 object-cover rounded-full" />
+                        <Image src={testimonial.image} alt={testimonial.name} class="w-28 h-28 object-cover rounded-full" />
                       ) : (
                         <div class="w-28 h-28 rounded-full bg-white/30 flex items-center justify-center">
                           <span class="text-3xl font-bold text-white">{testimonial.initials || testimonial.name.charAt(0)}</span>

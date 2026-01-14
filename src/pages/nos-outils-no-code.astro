@@ -1,5 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import notionLogo from '../assets/images/outils/notion.png';
+import codaLogo from '../assets/images/outils/coda.png';
+import makeLogo from '../assets/images/outils/make.svg';
+import wewebLogo from '../assets/images/outils/weweb.png';
+import dorikLogo from '../assets/images/outils/dorik.png';
+import airtableLogo from '../assets/images/outils/airtable.png';
 
 const tools = [
   {
@@ -15,7 +22,7 @@ const tools = [
       "Personnalisation"
     ],
     color: "purple",
-    logo: "/images/outils/notion.png"
+    logo: notionLogo
   },
   {
     name: "Coda",
@@ -30,7 +37,7 @@ const tools = [
       "Suivi des KPI"
     ],
     color: "orange",
-    logo: "/images/outils/coda.png"
+    logo: codaLogo
   },
   {
     name: "Make (Integromat)",
@@ -45,7 +52,7 @@ const tools = [
       "Économisez des ressources"
     ],
     color: "purple",
-    logo: "/images/outils/make.svg"
+    logo: makeLogo
   },
   {
     name: "Weweb",
@@ -61,7 +68,7 @@ const tools = [
       "Risques Minimisés"
     ],
     color: "red",
-    logo: "/images/outils/weweb.png"
+    logo: wewebLogo
   },
   {
     name: "Dorik",
@@ -76,7 +83,7 @@ const tools = [
       "Performances Optimisées"
     ],
     color: "blue",
-    logo: "/images/outils/dorik.png"
+    logo: dorikLogo
   },
   {
     name: "Airtable",
@@ -91,7 +98,7 @@ const tools = [
       "Formulaires personnalisés"
     ],
     color: "multi",
-    logo: "/images/outils/airtable.png"
+    logo: airtableLogo
   }
 ];
 
@@ -135,7 +142,7 @@ const getColorClasses = (color: string) => {
               <div class={`bg-white border-2 border-gray-100 rounded-lg p-6 hover:shadow-lg transition-all ${colors.border} border-b-4`}>
                 <div class={`w-14 h-14 ${colors.bg} rounded-xl flex items-center justify-center mb-4 p-2`}>
                   {tool.logo ? (
-                    <img src={tool.logo} alt={tool.name} class="w-full h-full object-contain" />
+                    <Image src={tool.logo} alt={tool.name} class="w-full h-full object-contain" />
                   ) : (
                     <span class={`text-2xl font-bold ${colors.text}`}>{tool.name.charAt(0)}</span>
                   )}

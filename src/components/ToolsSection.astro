@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import toolsIllustration from '../assets/images/tools-illustration.png';
 ---
 
 <section class="py-20 bg-white">
@@ -64,7 +66,7 @@
         
         <!-- Right: Illustration with blue-purple background -->
         <div class="bg-gradient-to-br from-primary to-primary-dark flex items-stretch overflow-hidden relative">
-          <img src="/images/assets/NF - graphic design accueil.png" alt="Illustration outils" class="w-full h-full object-cover relative z-10" />
+          <Image src={toolsIllustration} alt="Illustration outils" class="w-full h-full object-cover relative z-10" />
         </div>
       </div>
     </div>

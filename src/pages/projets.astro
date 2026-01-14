@@ -1,5 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import instantCodaImage from '../assets/images/projets/l\'instant coda.png';
+import sequenceurPreviewImage from '../assets/images/projets/le séquenceur preview.png';
+import donnerVoixPreviewImage from '../assets/images/projets/donner de la voix preview.png';
+import endophyteImage from '../assets/images/projets/endophyte.png';
+import dtsPreviewImage from '../assets/images/projets/DTS preview.png';
+import donnerVoixDetailImage from '../assets/images/projets/donner de la voix.png';
+import dailyTripSitterImage from '../assets/images/projets/daily trip sitter.png';
+import sequenceurDetailImage from '../assets/images/projets/le séquenceur.png';
 
 const projects = [
   {
@@ -7,35 +16,35 @@ const projects = [
     description: "A destination des usages internes des employés du centre de formation O'clock, nous avons mis en place une série de vidéos pédagogiques ainsi que plusieurs documentations liées aux process internes de l'entreprise.",
     link: "#formation-oclock",
     color: "blue",
-    image: "/images/projets/l'instant coda.png"
+    image: instantCodaImage
   },
   {
     title: "Le séquenceur",
     description: "Espace collaboratif et centralisé pour pouvoir gérer son activité : agenda, médiathèque, planification des événements, administration, etc.",
     link: "#sequenceur",
     color: "blue",
-    image: "/images/projets/le séquenceur preview.png"
+    image: sequenceurPreviewImage
   },
   {
     title: "CRM/ERP sur mesure",
     description: "Mise en place d'un outil coda, en collaboration avec Jessalynn Choby, pour gérer les apprenants ainsi que toute l'activité interne de la structure \"Donner de la Voix\"",
     link: "#crm-erp",
     color: "blue",
-    image: "/images/projets/donner de la voix preview.png"
+    image: donnerVoixPreviewImage
   },
   {
     title: "Présence numérique de endophyte",
     description: "Endophyte a pour mission de définir un écosystème autour du bois en créant des circuits courts entre l'arbre, les acteurs de la forêt, et les utilisateurs. Le groupe est composé de plusieurs activités : les bois boudés, endophyte, endolab et les menuisiers du puit.",
     link: "#endophyte",
     color: "blue",
-    image: "/images/projets/endophyte.png"
+    image: endophyteImage
   },
   {
     title: "Création de contenu automatisée",
     description: "DTS un projet qui vise à informer à propos des risques festifs. Des publications sont faites quotidiennement sur instagram grâce à une automatisation réalisée avec make et airtable.",
     link: "#contenu-automatise",
     color: "blue",
-    image: "/images/projets/DTS preview.png"
+    image: dtsPreviewImage
   },
   {
     title: "Et vous ?",
@@ -129,7 +138,7 @@ const projectDetails = [
             <div class={`rounded-2xl p-8 text-white shadow-xl hover:shadow-2xl transition-all overflow-hidden ${project.isCTA ? 'bg-[#F6A20E]' : 'bg-[#0284c7]'}`}>
               {project.image && (
                 <div class="mb-4 rounded-lg overflow-hidden">
-                  <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
+                  <Image src={project.image} alt={project.title} class="w-full h-48 object-cover" />
                 </div>
               )}
               <h3 class="text-2xl font-bold mb-4">{project.title}</h3>
@@ -202,11 +211,11 @@ const projectDetails = [
                   
                   {/* Image */}
                   <div class="mb-12 rounded-xl overflow-hidden flex justify-center">
-                    {detail.id === "crm-erp" && <img src="/images/projets/donner de la voix.png" alt={detail.title} class="w-1/2 h-auto object-cover" />}
-                    {detail.id === "contenu-automatise" && <img src="/images/projets/daily trip sitter.png" alt={detail.title} class="w-1/2 h-auto object-cover" />}
-                    {detail.id === "endophyte" && <img src="/images/projets/endophyte.png" alt={detail.title} class="w-1/2 h-auto object-cover" />}
-                    {detail.id === "formation-oclock" && <img src="/images/projets/l'instant coda.png" alt={detail.title} class="w-1/2 h-auto object-cover" />}
-                    {detail.id === "sequenceur" && <img src="/images/projets/le séquenceur.png" alt={detail.title} class="w-1/2 h-auto object-cover" />}
+                    {detail.id === "crm-erp" && <Image src={donnerVoixDetailImage} alt={detail.title} class="w-1/2 h-auto object-cover" />}
+                    {detail.id === "contenu-automatise" && <Image src={dailyTripSitterImage} alt={detail.title} class="w-1/2 h-auto object-cover" />}
+                    {detail.id === "endophyte" && <Image src={endophyteImage} alt={detail.title} class="w-1/2 h-auto object-cover" />}
+                    {detail.id === "formation-oclock" && <Image src={instantCodaImage} alt={detail.title} class="w-1/2 h-auto object-cover" />}
+                    {detail.id === "sequenceur" && <Image src={sequenceurDetailImage} alt={detail.title} class="w-1/2 h-auto object-cover" />}
                   </div>
                   
                   {/* Métriques */}

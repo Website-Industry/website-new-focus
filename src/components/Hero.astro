@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero-portrait.png';
 ---
 
 <section class="relative bg-[#4F46E5] pt-8 pb-0 overflow-hidden">
@@ -28,7 +30,7 @@
       <!-- Right visual area (illustration) -->
       <div class="relative h-full flex items-end">
         <div class="relative z-10 w-full">
-          <img src="/images/hero/Site Pro - Portrait Particules 2-min.png" alt="Marc Charton" class="w-full h-auto rounded-t-2xl object-cover" style="margin-bottom: 0;" />
+          <Image src={heroImage} alt="Marc Charton" class="w-full h-auto rounded-t-2xl object-cover" style="margin-bottom: 0;" />
         </div>
         <!-- Hexagonal shapes decoration -->
         <div class="absolute top-0 right-0 w-32 h-32 bg-orange-400 rounded-lg transform rotate-12 opacity-60 blur-sm"></div>
