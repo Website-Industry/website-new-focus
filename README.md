@@ -1,4 +1,4 @@
-# New Focus - Site Web
+# Nocode Focus - Site Web
 
 Site web statique créé avec Astro, reprenant le contenu de nocode-focus.com.
 
