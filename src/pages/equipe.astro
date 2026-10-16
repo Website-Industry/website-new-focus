@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// TODO : remplacer par les vraies informations de l'équipe.
+// `photo` est optionnel : chemin depuis /public (ex. '/images/equipe/marc.png').
+// Sans photo, les initiales sont affichées.
+const team = [
+  {
+    name: 'Marc Charton',
+    role: 'Fondateur · Chef de projet technique & formateur',
+    bio: "Plus de 10 ans d'expérience en développement, Marc accompagne les équipes du cadrage au déploiement : pilotage de projet, IA générative, automatisations (n8n, Make) et outils nocode. Il a notamment livré plus de 10 outils internes chez PwC et formé plus de 200 personnes jusqu'à la certification professionnelle.",
+    photo: '',
+    linkedin: 'https://www.linkedin.com/in/marccharton/',
+    book: 'https://book-marc.nocode-focus.com/',
+    color: 'purple',
+  },
+  {
+    name: 'Jess',
+    role: 'Webmaster · Développeuse web nocode & IA',
+    bio: "Formée au développement web, Jess conçoit aujourd'hui des sites, espaces membres, outils internes et automatisations pour les structures sans équipe technique. Son parcours hybride, entre technique et pédagogie (10 ans d'enseignement), lui permet de capter les besoins réels des utilisateurs et de les traduire en outils simples et efficaces.",
+    photo: '',
+    linkedin: 'https://fr.linkedin.com/in/jessalynnchoby',
+    book: 'https://book-jess.nocode-focus.com/',
+    color: 'orange',
+  },
+  {
+    name: 'Alban',
+    role: 'CTO & expert IA',
+    bio: "Développeur Ruby on Rails depuis plus de 10 ans et CTO d'une entreprise de gestion locative où il encadre une équipe technique de 5 à 6 personnes. Depuis 3 ans, il s'est spécialisé dans l'intégration de l'IA au sein des équipes techniques et la mise en place de process IA, du plus simple au plus avancé.",
+    photo: '',
+    linkedin: 'https://www.linkedin.com/in/albanblandin/',
+    book: '',
+    color: 'pink',
+  },
+];
+
+// Classes complètes pour que Tailwind les détecte
+const colorClasses = {
+  purple: { border: 'border-b-purple-500', avatar: 'bg-purple-100 text-purple-600', role: 'text-purple-600' },
+  orange: { border: 'border-b-orange-500', avatar: 'bg-orange-100 text-orange-600', role: 'text-orange-600' },
+  pink: { border: 'border-b-pink-500', avatar: 'bg-pink-100 text-pink-600', role: 'text-pink-600' },
+};
+
+const initials = (name: string) =>
+  name.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase();
+---
+
+<Layout title="Équipe - Nocode Focus">
+  <section class="relative min-h-[400px] md:min-h-[500px] overflow-hidden flex items-center justify-center" style="background: radial-gradient(circle at 30% 40%, #6366f1 0%, #4F46E5 60%, #4F46E5 100%);">
+    <div class="container mx-auto px-4 relative z-10 w-full">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-white">Notre équipe</h1>
+        <p class="text-xl md:text-2xl opacity-90">
+          Des passionnés du nocode à vos côtés pour concrétiser vos projets.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {team.map((member) => {
+            const c = colorClasses[member.color as keyof typeof colorClasses];
+            return (
+              <div class={`bg-white border-2 border-gray-100 rounded-lg p-8 hover:shadow-lg transition-all border-b-4 ${c.border} flex flex-col items-center text-center`}>
+                {member.photo ? (
+                  <img src={member.photo} alt={member.name} class="w-32 h-32 rounded-full object-cover mb-6" loading="lazy" />
+                ) : (
+                  <div class={`w-32 h-32 rounded-full flex items-center justify-center mb-6 text-3xl font-bold ${c.avatar}`}>
+                    {initials(member.name)}
+                  </div>
+                )}
+                <h3 class="text-xl font-bold mb-1 text-gray-900">{member.name}</h3>
+                <p class={`font-semibold mb-4 ${c.role}`}>{member.role}</p>
+                <p class="text-gray-600 leading-relaxed mb-6">{member.bio}</p>
+                <div class="mt-auto flex items-center gap-4">
+                  {member.linkedin && (
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gray-500 hover:text-[#4F46E5] transition-colors" aria-label={`LinkedIn de ${member.name}`}>
+                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                      </svg>
+                      LinkedIn
+                    </a>
+                  )}
+                  {member.book && (
+                    <a href={member.book} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gray-500 hover:text-[#4F46E5] transition-colors" aria-label={`Book de ${member.name}`}>
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path>
+                      </svg>
+                      Book
+                    </a>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
