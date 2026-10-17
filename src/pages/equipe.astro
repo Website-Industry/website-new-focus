@@ -1,33 +1,109 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Layout from '../layouts/Layout.astro';
+import marcPortrait from '../assets/images/hero-portrait.png';
 
-// TODO : remplacer par les vraies informations de l'équipe.
-// `photo` est optionnel : chemin depuis /public (ex. '/images/equipe/marc.png').
-// Sans photo, les initiales sont affichées.
-const team = [
+// Contenu de la page équipe.
+// - `tagline` et `skills` : version courte affichée dans les petites cartes.
+// - Le reste alimente la section détaillée de chaque personne, plus bas dans la page.
+// - `photo` est optionnel : image importée depuis src/assets (ex. `import jessPhoto from '../assets/images/equipe/jess.jpg'`).
+//   Sans photo, les initiales sont affichées.
+// - `quote` et `aside` : un mot plus personnel, à faire relire et ajuster par chaque personne.
+type Member = {
+  id: string;
+  name: string;
+  role: string;
+  tagline: string;
+  skills: string[];
+  photo?: ImageMetadata;
+  location: string;
+  intro: string[];
+  quote: string;
+  highlights: { value: string; label: string }[];
+  strengths: string[];
+  aside: { title: string; text: string };
+  linkedin: string;
+  book: string;
+  color: 'purple' | 'orange' | 'pink';
+};
+
+const team: Member[] = [
   {
+    id: 'marc',
     name: 'Marc Charton',
     role: 'Fondateur · Chef de projet technique & formateur',
-    bio: "Plus de 10 ans d'expérience en développement, Marc accompagne les équipes du cadrage au déploiement : pilotage de projet, IA générative, automatisations (n8n, Make) et outils nocode. Il a notamment livré plus de 10 outils internes chez PwC et formé plus de 200 personnes jusqu'à la certification professionnelle.",
-    photo: '',
+    tagline: 'Pilotage de projet, IA et formation',
+    skills: ['Cadrage', 'Automatisation', 'Formation'],
+    photo: marcPortrait,
+    location: 'Toulouse',
+    intro: [
+      "Développeur depuis plus de 10 ans, formateur et encadrant depuis 6 ans, Marc fait le lien entre les métiers, les équipes et la technique : cadrer un besoin, le découper en livrables, mener une équipe jusqu'à la mise en production et la faire monter en compétences en chemin.",
+      "Chez PwC, il a livré plus de 10 outils métiers internes en production et développé deux MVP d'IA générative pour le Lab IA. Chez O'Clock, il a accompagné plus de 200 apprenants jusqu'au titre professionnel. Avec Nocode Focus, il mène les missions de bout en bout, du devis à l'autonomie du client.",
+    ],
+    quote: "Je préfère un client qui repart autonome sur ses outils plutôt qu'un client qui dépend de moi.",
+    highlights: [
+      { value: '10+', label: 'ans de développement web' },
+      { value: '200+', label: 'apprenants accompagnés' },
+      { value: '10+', label: 'outils livrés chez PwC' },
+    ],
+    strengths: ['Cadrage & chiffrage', 'n8n · Make', 'WeWeb · Supabase', 'IA générative', 'Claude Code · Cursor', 'Jury de titres pro'],
+    aside: {
+      title: 'Ce qui le fait vibrer',
+      text: "Transmettre. Voir une équipe qui n'osait pas toucher au code avancer seule sur son projet, c'est sa plus belle livraison.",
+    },
     linkedin: 'https://www.linkedin.com/in/marccharton/',
     book: 'https://book-marc.nocode-focus.com/',
     color: 'purple',
   },
   {
+    id: 'jess',
     name: 'Jess',
     role: 'Webmaster · Développeuse web nocode & IA',
-    bio: "Formée au développement web, Jess conçoit aujourd'hui des sites, espaces membres, outils internes et automatisations pour les structures sans équipe technique. Son parcours hybride, entre technique et pédagogie (10 ans d'enseignement), lui permet de capter les besoins réels des utilisateurs et de les traduire en outils simples et efficaces.",
-    photo: '',
+    tagline: 'Sites, espaces membres et outils web',
+    skills: ['Sites web', 'Nocode & IA', 'Accompagnement'],
+    location: 'Toulouse',
+    intro: [
+      "Jess conçoit, développe et fait vivre des outils web pour les structures qui n'ont pas d'équipe tech : sites, espaces membres, outils internes, automatisations et communication. Formée au développement web, elle produit aujourd'hui avec le nocode et l'IA.",
+      "Enseignante depuis dix ans, elle anime des groupes de 5 à 50 personnes et travaille couramment en anglais. Son parcours hybride lui permet de capter les besoins réels des utilisateurs et de les traduire en outils simples, qu'elle sait ensuite expliquer aussi bien que construire.",
+    ],
+    quote: "Je suis à la fois la cliente, la designer, la développeuse et l'utilisatrice : je sais ce qu'un outil doit faire au quotidien.",
+    highlights: [
+      { value: '8', label: 'sites et outils réalisés' },
+      { value: '3', label: 'sites gérés au quotidien' },
+      { value: '10 ans', label: 'de pédagogie' },
+    ],
+    strengths: ['WordPress', 'Bubble', 'Coda', 'HTML · CSS · JS', 'Développement assisté par IA', 'Anglais courant'],
+    aside: {
+      title: 'En dehors des écrans',
+      text: "Elle enseigne le chant improvisé et a construit elle-même la plateforme de formation de son activité, Donner de la voix.",
+    },
     linkedin: 'https://fr.linkedin.com/in/jessalynnchoby',
     book: 'https://book-jess.nocode-focus.com/',
     color: 'orange',
   },
   {
+    id: 'alban',
     name: 'Alban',
     role: 'CTO & expert IA',
-    bio: "Développeur Ruby on Rails depuis plus de 10 ans et CTO d'une entreprise de gestion locative où il encadre une équipe technique de 5 à 6 personnes. Depuis 3 ans, il s'est spécialisé dans l'intégration de l'IA au sein des équipes techniques et la mise en place de process IA, du plus simple au plus avancé.",
-    photo: '',
+    tagline: 'Architecture technique et process IA',
+    skills: ['Ruby on Rails', 'Process IA', 'Lead tech'],
+    location: 'France · remote',
+    intro: [
+      "Développeur Ruby on Rails depuis plus de 10 ans, Alban est CTO d'une entreprise de gestion locative où il encadre une équipe technique de 5 à 6 personnes. Formé à Epitech, il a aussi été lead developer, CTO de marketplace et formateur au Wagon.",
+      "Depuis 3 ans, il s'est spécialisé dans l'intégration de l'IA au sein des équipes techniques : il met en place des process IA, du plus simple au plus avancé, pour que les développeurs gagnent en efficacité sans perdre la maîtrise de leur code.",
+    ],
+    quote: "L'IA ne remplace pas une équipe technique : elle lui donne de l'élan, à condition d'y mettre de la méthode.",
+    highlights: [
+      { value: '10+', label: 'ans de Ruby on Rails' },
+      { value: '5-6', label: 'devs encadrés' },
+      { value: '3 ans', label: "d'intégration de l'IA" },
+    ],
+    strengths: ['Ruby on Rails', 'Architecture logicielle', 'PostgreSQL', 'Process IA en équipe', 'Mentorat technique', 'Open source'],
+    aside: {
+      title: 'Côté perso',
+      text: "Grand voyageur et amoureux de l'open source, il travaille en remote depuis des années.",
+    },
     linkedin: 'https://www.linkedin.com/in/albanblandin/',
     book: '',
     color: 'pink',
@@ -36,13 +112,48 @@ const team = [
 
 // Classes complètes pour que Tailwind les détecte
 const colorClasses = {
-  purple: { border: 'border-b-purple-500', avatar: 'bg-purple-100 text-purple-600', role: 'text-purple-600' },
-  orange: { border: 'border-b-orange-500', avatar: 'bg-orange-100 text-orange-600', role: 'text-orange-600' },
-  pink: { border: 'border-b-pink-500', avatar: 'bg-pink-100 text-pink-600', role: 'text-pink-600' },
+  purple: {
+    border: 'border-b-purple-500',
+    avatar: 'bg-purple-100 text-purple-600',
+    role: 'text-purple-600',
+    chip: 'bg-purple-50 text-purple-700',
+    blob: 'bg-purple-200',
+    ring: 'ring-purple-500',
+    section: 'bg-purple-50/50',
+    quoteBorder: 'border-purple-500',
+    quoteMark: 'text-purple-200',
+    stat: 'text-purple-600',
+  },
+  orange: {
+    border: 'border-b-orange-500',
+    avatar: 'bg-orange-100 text-orange-600',
+    role: 'text-orange-600',
+    chip: 'bg-orange-50 text-orange-700',
+    blob: 'bg-orange-200',
+    ring: 'ring-orange-500',
+    section: 'bg-orange-50/50',
+    quoteBorder: 'border-orange-500',
+    quoteMark: 'text-orange-200',
+    stat: 'text-orange-600',
+  },
+  pink: {
+    border: 'border-b-pink-500',
+    avatar: 'bg-pink-100 text-pink-600',
+    role: 'text-pink-600',
+    chip: 'bg-pink-50 text-pink-700',
+    blob: 'bg-pink-200',
+    ring: 'ring-pink-500',
+    section: 'bg-pink-50/50',
+    quoteBorder: 'border-pink-500',
+    quoteMark: 'text-pink-200',
+    stat: 'text-pink-600',
+  },
 };
 
 const initials = (name: string) =>
   name.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase();
+
+const firstName = (name: string) => name.split(' ')[0];
 ---
 
 <Layout title="Équipe - Nocode Focus">
@@ -57,47 +168,154 @@ const initials = (name: string) =>
     </div>
   </section>
 
-  <section class="py-20 bg-white">
+  <!-- Petites cartes : un aperçu en quelques mots -->
+  <section id="cartes" class="scroll-mt-20 py-20 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {team.map((member) => {
-            const c = colorClasses[member.color as keyof typeof colorClasses];
+            const c = colorClasses[member.color];
             return (
-              <div class={`bg-white border-2 border-gray-100 rounded-lg p-8 hover:shadow-lg transition-all border-b-4 ${c.border} flex flex-col items-center text-center`}>
+              <a href={`#${member.id}`} class={`group bg-white border-2 border-gray-100 rounded-lg p-8 hover:shadow-lg hover:-translate-y-1 transition-all border-b-4 ${c.border} flex flex-col items-center text-center`}>
                 {member.photo ? (
-                  <img src={member.photo} alt={member.name} class="w-32 h-32 rounded-full object-cover mb-6" loading="lazy" />
+                  <Image src={member.photo} alt={member.name} width={256} height={256} class={`w-28 h-28 rounded-full object-cover object-top mb-6 ${c.avatar}`} />
                 ) : (
-                  <div class={`w-32 h-32 rounded-full flex items-center justify-center mb-6 text-3xl font-bold ${c.avatar}`}>
+                  <div class={`w-28 h-28 rounded-full flex items-center justify-center mb-6 text-3xl font-bold ${c.avatar}`}>
                     {initials(member.name)}
                   </div>
                 )}
                 <h3 class="text-xl font-bold mb-1 text-gray-900">{member.name}</h3>
-                <p class={`font-semibold mb-4 ${c.role}`}>{member.role}</p>
-                <p class="text-gray-600 leading-relaxed mb-6">{member.bio}</p>
-                <div class="mt-auto flex items-center gap-4">
-                  {member.linkedin && (
-                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gray-500 hover:text-[#4F46E5] transition-colors" aria-label={`LinkedIn de ${member.name}`}>
-                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
-                      </svg>
-                      LinkedIn
-                    </a>
-                  )}
-                  {member.book && (
-                    <a href={member.book} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gray-500 hover:text-[#4F46E5] transition-colors" aria-label={`Book de ${member.name}`}>
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path>
-                      </svg>
-                      Book
-                    </a>
-                  )}
-                </div>
-              </div>
+                <p class={`font-semibold mb-4 ${c.role}`}>{member.tagline}</p>
+                <ul class="flex flex-wrap justify-center gap-2 mb-6">
+                  {member.skills.map((skill) => (
+                    <li class={`text-xs font-semibold px-3 py-1 rounded-full ${c.chip}`}>{skill}</li>
+                  ))}
+                </ul>
+                <span class="mt-auto inline-flex items-center gap-1 text-sm font-medium text-gray-500 group-hover:text-[#4F46E5] transition-colors">
+                  Découvrir le profil
+                  <svg class="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </span>
+              </a>
             );
           })}
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Séparateur -->
+  <div class="bg-white pb-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto flex items-center gap-6">
+        <span class="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-gray-300"></span>
+        <div class="flex items-center gap-2" aria-hidden="true">
+          <span class="w-2 h-2 rotate-45 bg-purple-500"></span>
+          <span class="w-3 h-3 rotate-45 bg-[#4F46E5]"></span>
+          <span class="w-2 h-2 rotate-45 bg-orange-500"></span>
+        </div>
+        <span class="flex-1 h-px bg-gradient-to-l from-transparent via-gray-200 to-gray-300"></span>
+      </div>
+      <div class="text-center mt-10">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Faisons connaissance</h2>
+        <p class="text-lg text-gray-600">Les parcours, les envies et les mots de chacun.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Une section détaillée par personne -->
+  {team.map((member, index) => {
+    const c = colorClasses[member.color];
+    const reversed = index % 2 === 1;
+    return (
+      <section id={member.id} class={`scroll-mt-20 py-20 md:py-24 ${index % 2 === 0 ? c.section : 'bg-white'}`}>
+        <div class="container mx-auto px-4">
+          <div class={`max-w-6xl mx-auto flex flex-col gap-12 lg:gap-16 items-center lg:items-start ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+
+            <!-- Photo -->
+            <div class="w-full max-w-xs sm:max-w-sm lg:w-5/12 lg:max-w-none lg:sticky lg:top-28 shrink-0">
+              <div class="relative">
+                <div class={`absolute inset-0 rounded-3xl ${c.blob} ${reversed ? '-rotate-3' : 'rotate-3'}`} aria-hidden="true"></div>
+                <div class="relative rounded-3xl overflow-hidden bg-white shadow-xl aspect-[4/5]">
+                  {member.photo ? (
+                    <Image src={member.photo} alt={`Portrait de ${member.name}`} width={640} class="w-full h-full object-cover object-top" />
+                  ) : (
+                    <div class={`w-full h-full flex items-center justify-center text-7xl font-extrabold ${c.avatar}`}>
+                      {initials(member.name)}
+                    </div>
+                  )}
+                </div>
+                <div class={`absolute -bottom-5 ${reversed ? '-left-3 sm:-left-5' : '-right-3 sm:-right-5'} bg-white rounded-2xl shadow-lg px-5 py-3 flex items-center gap-2`}>
+                  <svg class={`w-4 h-4 ${c.role}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  <span class="text-sm font-semibold text-gray-700">{member.location}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profil -->
+            <div class="w-full lg:w-7/12">
+              <p class={`text-sm font-bold uppercase tracking-widest mb-3 ${c.role}`}>{member.role}</p>
+              <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8">{member.name}</h2>
+
+              <blockquote class={`relative border-l-4 ${c.quoteBorder} pl-6 mb-10`}>
+                <span class={`absolute -top-6 left-3 text-7xl font-serif leading-none select-none ${c.quoteMark}`} aria-hidden="true">“</span>
+                <p class="relative text-xl md:text-2xl font-medium italic text-gray-800 leading-relaxed">{member.quote}</p>
+                <footer class="mt-3 text-sm font-semibold text-gray-500">{firstName(member.name)}</footer>
+              </blockquote>
+
+              <div class="space-y-4 text-gray-600 text-lg leading-relaxed mb-10">
+                {member.intro.map((paragraph) => <p>{paragraph}</p>)}
+              </div>
+
+              <dl class="grid grid-cols-3 gap-4 mb-10">
+                {member.highlights.map((h) => (
+                  <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
+                    <dt class="sr-only">{h.label}</dt>
+                    <dd class={`text-2xl md:text-3xl font-extrabold ${c.stat}`}>{h.value}</dd>
+                    <dd class="text-xs md:text-sm text-gray-500 mt-1">{h.label}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <h3 class="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">Compétences clés</h3>
+              <ul class="flex flex-wrap gap-2 mb-10">
+                {member.strengths.map((s) => (
+                  <li class={`text-sm font-semibold px-4 py-2 rounded-full ${c.chip}`}>{s}</li>
+                ))}
+              </ul>
+
+              <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-10">
+                <p class={`text-sm font-bold mb-2 ${c.role}`}>{member.aside.title}</p>
+                <p class="text-gray-700 leading-relaxed">{member.aside.text}</p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-4">
+                {member.linkedin && (
+                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#4F46E5] text-white px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity" aria-label={`LinkedIn de ${member.name}`}>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                    </svg>
+                    LinkedIn
+                  </a>
+                )}
+                {member.book && (
+                  <a href={member.book} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border-2 border-[#4F46E5] text-[#4F46E5] px-5 py-2 rounded-lg font-semibold hover:bg-[#4F46E5] hover:text-white transition-colors" aria-label={`Book de ${member.name}`}>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path>
+                    </svg>
+                    Voir le book
+                  </a>
+                )}
+                <a href="#cartes" class="ml-auto text-sm font-medium text-gray-400 hover:text-[#4F46E5] transition-colors">Retour à l'équipe ↑</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  })}
 </Layout>
